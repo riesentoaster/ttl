@@ -11,5 +11,5 @@ A collection of solvers for a simple sudoku-like game.
 For all rows and for all columns (separately):
 
 - No two may be exactly equal.
-- It may have at most half the fields covered by `X`s and half with `O`s
+- It may have at most half the fields covered by `X`s and half with `O`s.
 - No three `O`s may appear consecutively, no three `X`s may appear consecutively.
