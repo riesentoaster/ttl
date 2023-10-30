@@ -1,0 +1,5 @@
+packages: ./*.cabal
+
+package tictaclogic
+  optimization: 2
+  profiling: true

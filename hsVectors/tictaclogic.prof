@@ -1,0 +1,158 @@
+	Mon Oct 30 15:09 2023 Time and Allocation Profiling Report  (Final)
+
+	   tictaclogic +RTS -N -p -RTS
+
+	total time  =        1.21 secs   (1713 ticks @ 1000 us, 10 processors)
+	total alloc = 2,311,169,816 bytes  (excludes profiling overheads)
+
+COST CENTRE                MODULE         SRC                                  %time %alloc
+
+tr                         Board          app/Board.hs:67:1-76                  26.3   72.2
+hasRowTriplets             Board          app/Board.hs:(51,1)-(61,17)           12.3    0.0
+areRowCountsOK.countElem   Board          app/Board.hs:42:5-76                   9.6    0.0
+hasDuplicateRows.filtered  Board          app/Board.hs:86:5-41                   9.1    1.9
+isBoardOKBasedOnRowsOnly   Board          app/Board.hs:(73,1)-(76,32)            7.5    0.0
+expand                     PrimitiveSolve app/PrimitiveSolve.hs:(9,1)-(20,57)    5.9   14.8
+word8ToField               Board          app/Board.hs:(24,1)-(26,18)            5.2    0.0
+hasDuplicateRows.f         Board          app/Board.hs:84:5-49                   4.6    4.7
+expand.(...)               PrimitiveSolve app/PrimitiveSolve.hs:19:5-47          2.7    0.4
+==                         Board          app/Board.hs:16:46-47                  2.6    0.0
+hasRowTriplets.r2          Board          app/Board.hs:60:5-17                   2.5    0.0
+areRowCountsOK.countElem.\ Board          app/Board.hs:42:41-73                  2.4    0.0
+isBoardFull                Board          app/Board.hs:79:1-34                   2.3    0.0
+hasRowTriplets.r1          Board          app/Board.hs:59:5-17                   2.0    0.0
+areRowCountsOK.maxValue    Board          app/Board.hs:48:5-34                   0.4    2.8
+hasDuplicateRows.extracted Board          app/Board.hs:85:5-50                   0.3    1.1
+
+
+                                                                                                                                               individual      inherited
+COST CENTRE                        MODULE                            SRC                                                    no.     entries  %time %alloc   %time %alloc
+
+MAIN                               MAIN                              <built-in>                                             213           0    0.1    0.0   100.0  100.0
+ CAF                               Board                             <entire-module>                                        425           0    0.0    0.0     0.0    0.0
+  isBoardFull                      Board                             app/Board.hs:79:1-34                                   494           1    0.0    0.0     0.0    0.0
+  tr                               Board                             app/Board.hs:67:1-76                                   482           1    0.0    0.0     0.0    0.0
+ CAF                               Main                              <entire-module>                                        423           0    0.0    0.0     0.0    0.0
+  main                             Main                              app/Main.hs:(25,1)-(29,52)                             426           1    0.0    0.0     0.0    0.0
+ CAF                               Data.Primitive.MachDeps           <entire-module>                                        406           0    0.0    0.0     0.0    0.0
+  sIZEOF_WORD8                     Data.Primitive.MachDeps           Data/Primitive/MachDeps.hs:95:1-16                     448           1    0.0    0.0     0.0    0.0
+ CAF                               Data.Fixed                        <entire-module>                                        358           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.Conc.Signal                   <entire-module>                                        323           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Encoding                   <entire-module>                                        304           0    0.1    0.0     0.1    0.0
+ CAF                               GHC.IO.Encoding.Iconv             <entire-module>                                        302           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Handle.FD                  <entire-module>                                        293           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Handle.Text                <entire-module>                                        291           0    0.1    0.0     0.1    0.0
+ CAF                               GHC.Event.Poll                    <entire-module>                                        234           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.Event.Thread                  <entire-module>                                        233           0    0.0    0.0     0.0    0.0
+ main                              Main                              app/Main.hs:(25,1)-(29,52)                             427           0    0.0    0.0    99.8  100.0
+  primitiveSolve                   PrimitiveSolve                    app/PrimitiveSolve.hs:(23,1)-(26,59)                   439      203435    0.4    0.9    99.8  100.0
+   isBoardOK                       Board                             app/Board.hs:70:1-78                                   440      203435    0.1    0.0    87.4   83.6
+    isBoardOKBasedOnRowsOnly       Board                             app/Board.hs:(73,1)-(76,32)                            441      357552    7.5    0.0    58.3   11.4
+     hasRowTriplets                Board                             app/Board.hs:(51,1)-(61,17)                            459     8483298   12.3    0.0    18.9    0.0
+      unId                         Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                460    22027006    0.0    0.0     0.0    0.0
+      ==                           Board                             app/Board.hs:16:46-47                                  465     6797448    0.4    0.0     0.4    0.0
+      hasRowTriplets.r1            Board                             app/Board.hs:59:5-17                                   461     6797448    2.0    0.0     2.3    0.0
+       unBox                       Data.Stream.Monadic               src/Data/Stream/Monadic.hs:123:20-24                   463     6797448    0.0    0.0     0.0    0.0
+       unId                        Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                462     6797448    0.0    0.0     0.0    0.0
+       word8ToField                Board                             app/Board.hs:(24,1)-(26,18)                            464     6797448    0.2    0.0     0.2    0.0
+      hasRowTriplets.r2            Board                             app/Board.hs:60:5-17                                   526     6078014    2.5    0.0     3.2    0.0
+       unBox                       Data.Stream.Monadic               src/Data/Stream/Monadic.hs:123:20-24                   528     6078014    0.0    0.0     0.0    0.0
+       unId                        Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                527     6078014    0.0    0.0     0.0    0.0
+       word8ToField                Board                             app/Board.hs:(24,1)-(26,18)                            529     6078014    0.8    0.0     0.8    0.0
+      hasRowTriplets.r3            Board                             app/Board.hs:61:5-17                                   530     1663888    0.8    0.0     0.8    0.0
+       unBox                       Data.Stream.Monadic               src/Data/Stream/Monadic.hs:123:20-24                   532     1663888    0.0    0.0     0.0    0.0
+       unId                        Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                531     1663888    0.0    0.0     0.0    0.0
+       word8ToField                Board                             app/Board.hs:(24,1)-(26,18)                            533     1663888    0.0    0.0     0.0    0.0
+     array#                        Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        444     3709896    0.0    0.0     0.0    0.0
+     areRowCountsOK                Board                             app/Board.hs:(39,1)-(48,34)                            449     1998452    0.5    0.0    14.9    2.8
+      areRowCountsOK.maxValue      Board                             app/Board.hs:48:5-34                                   450     1998452    0.4    2.8     0.4    2.8
+       unId                        Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                451     1998452    0.0    0.0     0.0    0.0
+      areRowCountsOK.res           Board                             app/Board.hs:41:5-64                                   452     1998452    0.8    0.0    14.0    0.0
+       areRowCountsOK.countElem    Board                             app/Board.hs:42:5-76                                   453     3963857    9.6    0.0    13.1    0.0
+        areRowCountsOK.countElem.\ Board                             app/Board.hs:42:41-73                                  457    23783142    2.4    0.0     3.0    0.0
+         ==                        Board                             app/Board.hs:16:46-47                                  458    23783142    0.6    0.0     0.6    0.0
+        word8ToField               Board                             app/Board.hs:(24,1)-(26,18)                            456    23783142    0.5    0.0     0.5    0.0
+        sElems                     Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:121:30-35     455     3963857    0.0    0.0     0.0    0.0
+        unId                       Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                454     3963857    0.0    0.0     0.0    0.0
+     sElems                        Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:121:30-35     443      649010    0.0    0.0     0.0    0.0
+     unId                          Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                442      649010    0.0    0.0     0.0    0.0
+     hasDuplicateRows              Board                             app/Board.hs:(82,1)-(86,41)                            466      265864    0.9    0.9    17.0    8.6
+      array#                       Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        534      814878    0.0    0.0     0.0    0.0
+      hasDuplicateRows.f           Board                             app/Board.hs:84:5-49                                   480      814878    4.6    4.7     6.2    5.8
+       word8ToField                Board                             app/Board.hs:(24,1)-(26,18)                            541     4794176    0.8    0.0     0.8    0.0
+       sElems                      Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:121:30-35     536     3577744    0.0    0.0     0.0    0.0
+       sSize                       Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34     539     2768968    0.0    0.0     0.0    0.0
+       ==                          Board                             app/Board.hs:16:46-47                                  540     2397088    0.5    0.0     0.5    0.0
+       unId                        Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                535     2193260    0.0    0.0     0.0    0.0
+       array#                      Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        538     1384484    0.0    0.0     0.0    0.0
+       hasDuplicateRows.extracted  Board                             app/Board.hs:85:5-50                                   481      808776    0.3    1.1     0.3    1.1
+        unId                       Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                537      808776    0.0    0.0     0.0    0.0
+      hasDuplicateRows.filtered    Board                             app/Board.hs:86:5-41                                   469      265864    9.1    1.9    10.0    1.9
+       ==                          Board                             app/Board.hs:16:46-47                                  477     8386658    0.8    0.0     0.8    0.0
+       word8ToField                Board                             app/Board.hs:(24,1)-(26,18)                            478     8386658    0.1    0.0     0.1    0.0
+       unId                        Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                475     3456232    0.0    0.0     0.0    0.0
+       sElems                      Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:121:30-35     470     1861048    0.0    0.0     0.0    0.0
+       array#                      Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        476     1595184    0.0    0.0     0.0    0.0
+       marray#                     Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                       479     1080742    0.0    0.0     0.0    0.0
+       sSize                       Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34     472      531728    0.0    0.0     0.0    0.0
+       sChunks                     Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36     474      265864    0.0    0.0     0.0    0.0
+       toMax                       Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(118,1)-(120,25) 473      265864    0.0    0.0     0.0    0.0
+       upperBound                  Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30) 471      265864    0.0    0.0     0.0    0.0
+      sElems                       Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:121:30-35     468      265864    0.0    0.0     0.0    0.0
+      unId                         Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                467      265864    0.0    0.0     0.0    0.0
+    tr                             Board                             app/Board.hs:67:1-76                                   483           0   26.3   72.2    29.0   72.2
+     unId                          Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                488    14299040    0.0    0.0     0.0    0.0
+     sizeOf                        Data.Primitive.Types              Data/Primitive/Types.hs:170:1-25                       491     7288056    0.0    0.0     0.0    0.0
+     fieldToWord8                  Board                             app/Board.hs:(19,1)-(21,18)                            492     4858704    0.0    0.0     0.0    0.0
+     word8ToField                  Board                             app/Board.hs:(24,1)-(26,18)                            493     4858704    2.7    0.0     2.7    0.0
+     sSize                         Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34     486     1118018    0.0    0.0     0.0    0.0
+     marray#                       Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                       490     1078819    0.0    0.0     0.0    0.0
+     sChunks                       Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36     487      963901    0.0    0.0     0.0    0.0
+     upperBound                    Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30) 485      963901    0.0    0.0     0.0    0.0
+     array#                        Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        489      924702    0.0    0.0     0.0    0.0
+     sElems                        Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:121:30-35     484      308234    0.0    0.0     0.0    0.0
+   expand                          PrimitiveSolve                    app/PrimitiveSolve.hs:(9,1)-(20,57)                    501      101717    5.9   14.8     9.6   15.5
+    unId                           Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                502     3051510    0.0    0.0     0.0    0.0
+    sizeOf                         Data.Primitive.Types              Data/Primitive/Types.hs:170:1-25                       525      610302    0.0    0.0     0.0    0.0
+    fieldToWord8                   Board                             app/Board.hs:(19,1)-(21,18)                            523      406868    0.0    0.0     0.0    0.0
+    marray#                        Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                       522      406868    0.0    0.0     0.0    0.0
+    sChunks                        Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36     521      406868    0.0    0.0     0.0    0.0
+    sSize                          Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34     520      406868    0.0    0.0     0.0    0.0
+    upperBound                     Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30) 519      406868    0.0    0.0     0.0    0.0
+    expand.(...)                   PrimitiveSolve                    app/PrimitiveSolve.hs:20:5-57                          511      101717    0.6    0.3     0.6    0.3
+     ==                            Board                             app/Board.hs:16:46-47                                  516      395175    0.0    0.0     0.0    0.0
+     word8ToField                  Board                             app/Board.hs:(24,1)-(26,18)                            517      395175    0.0    0.0     0.0    0.0
+     unId                          Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                512      305151    0.0    0.0     0.0    0.0
+     array#                        Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        515      101717    0.0    0.0     0.0    0.0
+     sElems                        Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:121:30-35     513      101717    0.0    0.0     0.0    0.0
+     unBox                         Data.Stream.Monadic               src/Data/Stream/Monadic.hs:123:20-24                   514      101717    0.0    0.0     0.0    0.0
+    expand.(...)                   PrimitiveSolve                    app/PrimitiveSolve.hs:19:5-47                          504      101717    2.7    0.4     3.0    0.4
+     ==                            Board                             app/Board.hs:16:46-47                                  508     2935251    0.3    0.0     0.3    0.0
+     word8ToField                  Board                             app/Board.hs:(24,1)-(26,18)                            509     2935251    0.0    0.0     0.0    0.0
+     unId                          Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                505      728497    0.0    0.0     0.0    0.0
+     sElems                        Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:121:30-35     506      626780    0.0    0.0     0.0    0.0
+     array#                        Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        507      525063    0.0    0.0     0.0    0.0
+    expand.postRow                 PrimitiveSolve                    app/PrimitiveSolve.hs:20:5-57                          510      101717    0.0    0.0     0.0    0.0
+    expand.postRows                PrimitiveSolve                    app/PrimitiveSolve.hs:19:5-47                          503      101717    0.0    0.0     0.0    0.0
+    expand.preRow                  PrimitiveSolve                    app/PrimitiveSolve.hs:20:5-57                          524      101717    0.0    0.0     0.0    0.0
+    expand.preRows                 PrimitiveSolve                    app/PrimitiveSolve.hs:19:5-47                          518      101717    0.0    0.0     0.0    0.0
+   isBoardFull                     Board                             app/Board.hs:79:1-34                                   495           0    2.3    0.0     2.5    0.0
+    ==                             Board                             app/Board.hs:16:46-47                                  499     3084291    0.1    0.0     0.1    0.0
+    word8ToField                   Board                             app/Board.hs:(24,1)-(26,18)                            500     3084291    0.1    0.0     0.1    0.0
+    sElems                         Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:121:30-35     497      655760    0.0    0.0     0.0    0.0
+    unId                           Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                496      655760    0.0    0.0     0.0    0.0
+    array#                         Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        498      549903    0.0    0.0     0.0    0.0
+  empty                            Board                             app/Board.hs:95:1-44                                   433           1    0.0    0.0     0.0    0.0
+   unId                            Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                437           4    0.0    0.0     0.0    0.0
+   fieldToWord8                    Board                             app/Board.hs:(19,1)-(21,18)                            445           2    0.0    0.0     0.0    0.0
+   marray#                         Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                       438           2    0.0    0.0     0.0    0.0
+   sChunks                         Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36     436           2    0.0    0.0     0.0    0.0
+   sSize                           Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34     435           2    0.0    0.0     0.0    0.0
+   upperBound                      Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30) 434           2    0.0    0.0     0.0    0.0
+   sizeOf                          Data.Primitive.Types              Data/Primitive/Types.hs:170:1-25                       447           1    0.0    0.0     0.0    0.0
+  main.(...)                       Main                              app/Main.hs:27:7-48                                    430           1    0.0    0.0     0.0    0.0
+   parseArgs                       Main                              app/Main.hs:(11,1)-(15,26)                             431           1    0.0    0.0     0.0    0.0
+    parseArgs.parsed               Main                              app/Main.hs:15:5-26                                    432           1    0.0    0.0     0.0    0.0
+  main.x                           Main                              app/Main.hs:27:7-48                                    429           1    0.0    0.0     0.0    0.0
+  main.y                           Main                              app/Main.hs:27:7-48                                    446           1    0.0    0.0     0.0    0.0
+  time                             Main                              app/Main.hs:(18,1)-(22,70)                             428           1    0.0    0.0     0.0    0.0

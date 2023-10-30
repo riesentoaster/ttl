@@ -1,0 +1,69 @@
+	Mon Oct 30 15:09 2023 Time and Allocation Profiling Report  (Final)
+
+	   tictaclogic +RTS -N -p -RTS
+
+	total time  =        0.72 secs   (1011 ticks @ 1000 us, 10 processors)
+	total alloc = 1,023,206,392 bytes  (excludes profiling overheads)
+
+COST CENTRE              MODULE         SRC                                   %time %alloc
+
+hasDuplicateRows         Board          app/Board.hs:(45,1)-(46,75)            28.7    0.0
+countElem                Board          app/Board.hs:12:1-36                   21.4    5.4
+isBoardOK                Board          app/Board.hs:33:1-85                   13.4   73.5
+hasRowTriplets           Board          app/Board.hs:(22,1)-(27,24)             9.3    0.0
+areRowCountsOK           Board          app/Board.hs:(15,1)-(19,27)             6.1    0.0
+expand.(...)             PrimitiveSolve app/PrimitiveSolve.hs:11:5-42           5.2    5.3
+isBoardFull              Board          app/Board.hs:42:1-29                    5.0    0.0
+isBoardOKBasedOnRowsOnly Board          app/Board.hs:(36,1)-(39,28)             3.2    0.0
+==                       Board          app/Board.hs:5:40-41                    3.1    0.0
+expand                   PrimitiveSolve app/PrimitiveSolve.hs:(6,1)-(12,52)     1.6   10.9
+expand.(...)             PrimitiveSolve app/PrimitiveSolve.hs:12:5-52           0.8    3.7
+primitiveSolve           PrimitiveSolve app/PrimitiveSolve.hs:(15,1)-(18,51)    0.6    1.3
+
+
+                                                                                                           individual      inherited
+COST CENTRE                  MODULE                SRC                                  no.     entries  %time %alloc   %time %alloc
+
+MAIN                         MAIN                  <built-in>                           155           0    0.6    0.0   100.0  100.0
+ CAF                         Board                 <entire-module>                      309           0    0.0    0.0     0.0    0.0
+  isBoardFull                Board                 app/Board.hs:42:1-29                 330           1    0.0    0.0     0.0    0.0
+ CAF                         Main                  <entire-module>                      305           0    0.0    0.0     0.0    0.0
+  main                       Main                  app/Main.hs:(25,1)-(28,53)           310           1    0.0    0.0     0.0    0.0
+ CAF                         Data.Fixed            <entire-module>                      287           0    0.0    0.0     0.0    0.0
+ CAF                         GHC.Conc.Signal       <entire-module>                      262           0    0.1    0.0     0.1    0.0
+ CAF                         GHC.IO.Encoding       <entire-module>                      244           0    0.0    0.0     0.0    0.0
+ CAF                         GHC.IO.Encoding.Iconv <entire-module>                      242           0    0.0    0.0     0.0    0.0
+ CAF                         GHC.IO.Handle.FD      <entire-module>                      233           0    0.0    0.0     0.0    0.0
+ CAF                         GHC.IO.Handle.Text    <entire-module>                      231           0    0.0    0.0     0.0    0.0
+ CAF                         GHC.Event.Poll        <entire-module>                      176           0    0.0    0.0     0.0    0.0
+ CAF                         GHC.Event.Thread      <entire-module>                      175           0    0.0    0.0     0.0    0.0
+ main                        Main                  app/Main.hs:(25,1)-(28,53)           311           0    0.0    0.0    99.3  100.0
+  primitiveSolve             PrimitiveSolve        app/PrimitiveSolve.hs:(15,1)-(18,51) 318      203435    0.6    1.3    99.2  100.0
+   isBoardOK                 Board                 app/Board.hs:33:1-85                 319      203435   13.4   73.5    85.6   78.8
+    isBoardOKBasedOnRowsOnly Board                 app/Board.hs:(36,1)-(39,28)          320      357552    3.2    0.0    72.2    5.4
+     hasRowTriplets          Board                 app/Board.hs:(22,1)-(27,24)          321    10201180    9.3    0.0    10.0    0.0
+      ==                     Board                 app/Board.hs:5:40-41                 323     8187542    0.7    0.0     0.7    0.0
+     hasDuplicateRows        Board                 app/Board.hs:(45,1)-(46,75)          324     2142554   28.7    0.0    30.5    0.0
+      ==                     Board                 app/Board.hs:5:40-41                 325    14821708    1.8    0.0     1.8    0.0
+     areRowCountsOK          Board                 app/Board.hs:(15,1)-(19,27)          326     1726410    6.1    0.0    28.6    5.4
+      countElem              Board                 app/Board.hs:12:1-36                 327     3430624   21.4    5.4    21.6    5.4
+       ==                    Board                 app/Board.hs:5:40-41                 328    20583744    0.2    0.0     0.2    0.0
+      areRowCountsOK.len     Board                 app/Board.hs:19:5-27                 329     1726410    0.9    0.0     0.9    0.0
+   expand                    PrimitiveSolve        app/PrimitiveSolve.hs:(6,1)-(12,52)  333      101717    1.6   10.9     8.0   19.8
+    expand.preRow            PrimitiveSolve        app/PrimitiveSolve.hs:12:5-52        341      203434    0.0    0.0     0.0    0.0
+    expand.preRows           PrimitiveSolve        app/PrimitiveSolve.hs:11:5-42        340      203434    0.0    0.0     0.0    0.0
+    expand.(...)             PrimitiveSolve        app/PrimitiveSolve.hs:12:5-52        338      101717    0.8    3.7     0.8    3.7
+     ==                      Board                 app/Board.hs:5:40-41                 339      395175    0.0    0.0     0.0    0.0
+    expand.(...)             PrimitiveSolve        app/PrimitiveSolve.hs:11:5-42        335      101717    5.2    5.3     5.6    5.3
+     ==                      Board                 app/Board.hs:5:40-41                 336     2935251    0.4    0.0     0.4    0.0
+    expand.postRow           PrimitiveSolve        app/PrimitiveSolve.hs:12:5-52        337      101717    0.0    0.0     0.0    0.0
+    expand.postRows          PrimitiveSolve        app/PrimitiveSolve.hs:11:5-42        334      101717    0.0    0.0     0.0    0.0
+   isBoardFull               Board                 app/Board.hs:42:1-29                 331           0    5.0    0.0     5.0    0.0
+    ==                       Board                 app/Board.hs:5:40-41                 332     3084291    0.0    0.0     0.0    0.0
+  empty                      Board                 app/Board.hs:55:1-39                 317           1    0.0    0.0     0.0    0.0
+  main.(...)                 Main                  app/Main.hs:27:7-48                  314           1    0.0    0.0     0.0    0.0
+   parseArgs                 Main                  app/Main.hs:(11,1)-(15,26)           315           1    0.0    0.0     0.0    0.0
+    parseArgs.parsed         Main                  app/Main.hs:15:5-26                  316           1    0.0    0.0     0.0    0.0
+  main.x                     Main                  app/Main.hs:27:7-48                  313           1    0.0    0.0     0.0    0.0
+  main.y                     Main                  app/Main.hs:27:7-48                  322           1    0.0    0.0     0.0    0.0
+  time                       Main                  app/Main.hs:(18,1)-(22,70)           312           1    0.1    0.0     0.1    0.0

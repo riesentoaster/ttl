@@ -1,0 +1,119 @@
+	Wed Oct 11 21:49 2023 Time and Allocation Profiling Report  (Final)
+
+	   tictaclogic +RTS -p -RTS
+
+	total time  =      580.35 secs   (580354 ticks @ 1000 us, 1 processor)
+	total alloc = 1,457,092,628,456 bytes  (excludes profiling overheads)
+
+COST CENTRE                           MODULE                 SRC                                           %time %alloc
+
+fixTriplets.f                         ManualSolve            app/ManualSolve.hs:(21,5)-(28,50)              17.6   32.4
+countElem                             Board                  app/Board.hs:12:1-36                           14.0    0.8
+solveManual                           ManualSolve            app/ManualSolve.hs:(45,1)-(50,28)              13.8   29.6
+hasDuplicateRows                      Board                  app/Board.hs:(47,1)-(48,75)                    13.0    0.0
+==                                    Board                  app/Board.hs:5:40-41                            7.4    0.0
+isBoardOK.trs                         Board                  app/Board.hs:41:5-22                            6.4   13.1
+replace                               ManualSolve            app/ManualSolve.hs:39:1-67                      4.5   12.6
+hasRowTriplets                        Board                  app/Board.hs:(22,1)-(27,24)                     4.1    0.0
+areRowCountsOK                        Board                  app/Board.hs:(15,1)-(19,27)                     3.9    0.0
+isBoardOKBasedOnLastChange.transposed BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:17:5-28           3.0    8.0
+replace.\                             ManualSolve            app/ManualSolve.hs:39:34-66                     2.0    0.0
+isBoardFull                           Board                  app/Board.hs:44:1-29                            1.8    0.0
+expandBasedOnLastChange.(...)         BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:41:5-42           1.6    0.6
+fixCountForFullRow.len                ManualSolve            app/ManualSolve.hs:36:5-18                      1.0    0.0
+expandBasedOnLastChange               BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:(36,1)-(44,21)    0.6    1.2
+
+
+                                                                                                                                    individual      inherited
+COST CENTRE                                  MODULE                 SRC                                          no.     entries  %time %alloc   %time %alloc
+
+MAIN                                         MAIN                   <built-in>                                   155           0    0.0    0.0   100.0  100.0
+ CAF                                         Board                  <entire-module>                              309           0    0.0    0.0     0.0    0.0
+  isBoardFull                                Board                  app/Board.hs:44:1-29                         331           1    0.0    0.0     0.0    0.0
+ CAF                                         ManualSolve            <entire-module>                              308           0    0.0    0.0     0.0    0.0
+  fixTriplets                                ManualSolve            app/ManualSolve.hs:(19,1)-(28,50)            367           1    0.0    0.0     0.0    0.0
+  solveAndFilterManual                       ManualSolve            app/ManualSolve.hs:42:1-57                   336           1    0.0    0.0     0.0    0.0
+  solveManual                                ManualSolve            app/ManualSolve.hs:(45,1)-(50,28)            362           1    0.0    0.0     0.0    0.0
+   solveManual.f                             ManualSolve            app/ManualSolve.hs:(47,5)-(50,28)            365           1    0.0    0.0     0.0    0.0
+ CAF                                         BasedOnLastChangeSolve <entire-module>                              307           0    0.0    0.0     0.0    0.0
+  getValidExpansions                         BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:(29,1)-(33,29) 334           1    0.0    0.0     0.0    0.0
+ CAF                                         Main                   <entire-module>                              305           0    0.0    0.0     0.0    0.0
+  main                                       Main                   app/Main.hs:(25,1)-(29,60)                   310           1    0.0    0.0     0.0    0.0
+   empty                                     Board                  app/Board.hs:57:1-39                         319           1    0.0    0.0     0.0    0.0
+   main.y                                    Main                   app/Main.hs:27:7-48                          322           1    0.0    0.0     0.0    0.0
+ CAF                                         Data.Fixed             <entire-module>                              287           0    0.0    0.0     0.0    0.0
+ CAF                                         GHC.Conc.Signal        <entire-module>                              262           0    0.0    0.0     0.0    0.0
+ CAF                                         GHC.IO.Encoding        <entire-module>                              244           0    0.0    0.0     0.0    0.0
+ CAF                                         GHC.IO.Encoding.Iconv  <entire-module>                              242           0    0.0    0.0     0.0    0.0
+ CAF                                         GHC.IO.Handle.FD       <entire-module>                              233           0    0.0    0.0     0.0    0.0
+ CAF                                         GHC.IO.Handle.Text     <entire-module>                              231           0    0.0    0.0     0.0    0.0
+ main                                        Main                   app/Main.hs:(25,1)-(29,60)                   311           0    0.0    0.0   100.0  100.0
+  main.(...)                                 Main                   app/Main.hs:27:7-48                          314           1    0.0    0.0     0.0    0.0
+   parseArgs                                 Main                   app/Main.hs:(11,1)-(15,26)                   315           1    0.0    0.0     0.0    0.0
+    parseArgs.parsed                         Main                   app/Main.hs:15:5-26                          316           1    0.0    0.0     0.0    0.0
+  main.x                                     Main                   app/Main.hs:27:7-48                          313           1    0.0    0.0     0.0    0.0
+  solveBasedOnLastChange                     BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:53:1-75        317           1    0.0    0.0   100.0  100.0
+   solveOKBoard                              BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:(47,1)-(50,54) 330    15671985    0.3    0.5   100.0  100.0
+    getValidExpansions                       BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:(29,1)-(33,29) 335           0    0.2    0.1    97.5   99.5
+     isBoardOKBasedOnLastChange              BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:(8,1)-(18,25)  347    23121738    0.2    0.0     7.3    8.1
+      hasRowTriplets                         Board                  app/Board.hs:(22,1)-(27,24)                  360   302317026    0.6    0.0     0.8    0.0
+       ==                                    Board                  app/Board.hs:5:40-41                         361   259169718    0.2    0.0     0.2    0.0
+      areRowCountsOK                         Board                  app/Board.hs:(15,1)-(19,27)                  350    44945620    0.5    0.0     2.1    0.1
+       countElem                             Board                  app/Board.hs:12:1-36                         351    89226316    1.5    0.1     1.5    0.1
+        ==                                   Board                  app/Board.hs:5:40-41                         352   713810528    0.0    0.0     0.0    0.0
+       areRowCountsOK.len                    Board                  app/Board.hs:19:5-27                         353    44945620    0.1    0.0     0.1    0.0
+      hasDuplicateRowsBasedOnRow             BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:(21,1)-(23,23) 357    43469990    0.8    0.0     1.1    0.0
+       ==                                    Board                  app/Board.hs:5:40-41                         359   318292732    0.1    0.0     0.1    0.0
+       hasDuplicateRowsBasedOnRow.currentRow BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:23:5-23        358    43469990    0.1    0.0     0.1    0.0
+      isBoardOKBasedOnLastChange.row         BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:16:5-16        348    23121738    0.1    0.0     0.1    0.0
+      isBoardOKBasedOnLastChange.col         BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:18:5-25        355    21823882    0.0    0.0     0.0    0.0
+      isBoardOKBasedOnLastChange.transposed  BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:17:5-28        354    21823882    3.0    8.0     3.0    8.0
+     trd                                     BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:26:1-17        364    21573654    0.0    0.0     0.0    0.0
+     expandBasedOnLastChange                 BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:(36,1)-(44,21) 338    11560869    0.6    1.2     2.8    2.2
+      expandBasedOnLastChange.(...)          BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:42:5-52        343    11560869    0.3    0.4     0.3    0.4
+       ==                                    Board                  app/Board.hs:5:40-41                         344    54552329    0.0    0.0     0.0    0.0
+      expandBasedOnLastChange.(...)          BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:41:5-42        340    11560869    1.6    0.6     1.8    0.6
+       ==                                    Board                  app/Board.hs:5:40-41                         341   574061081    0.2    0.0     0.2    0.0
+      expandBasedOnLastChange.postRow        BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:42:5-52        342    11560869    0.0    0.0     0.0    0.0
+      expandBasedOnLastChange.postRows       BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:41:5-42        339    11560869    0.0    0.0     0.0    0.0
+      expandBasedOnLastChange.preRow         BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:42:5-52        349    11560869    0.0    0.0     0.0    0.0
+      expandBasedOnLastChange.preRows        BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:41:5-42        346    11560869    0.0    0.0     0.0    0.0
+      expandBasedOnLastChange.x              BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:43:5-22        345    11560869    0.0    0.0     0.0    0.0
+      expandBasedOnLastChange.y              BasedOnLastChangeSolve app/BasedOnLastChangeSolve.hs:44:5-21        356    11560869    0.0    0.0     0.0    0.0
+     solveAndFilterManual                    ManualSolve            app/ManualSolve.hs:42:1-57                   337           0    0.2    0.1    87.2   89.1
+      isBoardOK                              Board                  app/Board.hs:(33,1)-(41,22)                  376    21573654    0.6    0.0    40.3   13.9
+       hasRowTriplets                        Board                  app/Board.hs:(22,1)-(27,24)                  384  1805315880    3.5    0.0     4.9    0.0
+        ==                                   Board                  app/Board.hs:5:40-41                         385  1548104280    1.4    0.0     1.4    0.0
+       areRowCountsOK                        Board                  app/Board.hs:(15,1)-(19,27)                  377   337505930    3.3    0.0    13.8    0.7
+        countElem                            Board                  app/Board.hs:12:1-36                         378   674398093    9.9    0.7    10.0    0.7
+         ==                                  Board                  app/Board.hs:5:40-41                         379  5395184744    0.1    0.0     0.1    0.0
+        areRowCountsOK.len                   Board                  app/Board.hs:19:5-27                         380   337505930    0.5    0.0     0.5    0.0
+       hasDuplicateRows                      Board                  app/Board.hs:(47,1)-(48,75)                  382   329037288   13.0    0.0    14.6    0.0
+        ==                                   Board                  app/Board.hs:5:40-41                         383  3852243082    1.6    0.0     1.6    0.0
+       isBoardOK.trs                         Board                  app/Board.hs:41:5-22                         381    20899482    6.4   13.1     6.4   13.1
+      solveManual                            ManualSolve            app/ManualSolve.hs:(45,1)-(50,28)            363           0   13.8   29.6    46.7   75.2
+       solveManual.f                         ManualSolve            app/ManualSolve.hs:(47,5)-(50,28)            366           0    0.4    0.6    32.9   45.6
+        fixCountForFullRow                   ManualSolve            app/ManualSolve.hs:(31,1)-(36,18)            370   345178464    1.0    0.0    13.1   12.6
+         countElem                           Board                  app/Board.hs:12:1-36                         371   462810921    2.6    0.0     4.3    0.0
+          ==                                 Board                  app/Board.hs:5:40-41                         373  3702487368    1.7    0.0     1.7    0.0
+         fixCountForFullRow.len              ManualSolve            app/ManualSolve.hs:36:5-18                   372   345178464    1.0    0.0     1.0    0.0
+         replace                             ManualSolve            app/ManualSolve.hs:39:1-67                   386   250111196    4.5   12.6     6.8   12.6
+          replace.\                          ManualSolve            app/ManualSolve.hs:39:34-66                  387  2000889568    2.0    0.0     2.3    0.0
+           ==                                Board                  app/Board.hs:5:40-41                         388  2000889568    0.3    0.0     0.3    0.0
+        fixTriplets                          ManualSolve            app/ManualSolve.hs:(19,1)-(28,50)            368           0    0.3    0.0    19.4   32.4
+         fixTriplets.f                       ManualSolve            app/ManualSolve.hs:(21,5)-(28,50)            369  2404829382   17.6   32.4    19.2   32.4
+          ==                                 Board                  app/Board.hs:5:40-41                         374  6105639896    1.5    0.0     1.5    0.0
+          other                              ManualSolve            app/ManualSolve.hs:(14,1)-(16,11)            375   109824416    0.1    0.0     0.1    0.0
+    isBoardFull                              Board                  app/Board.hs:44:1-29                         332           0    1.8    0.0     2.2    0.0
+     ==                                      Board                  app/Board.hs:5:40-41                         333   837172505    0.3    0.0     0.3    0.0
+   isBoardOK                                 Board                  app/Board.hs:(33,1)-(41,22)                  318           1    0.0    0.0     0.0    0.0
+    hasRowTriplets                           Board                  app/Board.hs:(22,1)-(27,24)                  328         112    0.0    0.0     0.0    0.0
+     ==                                      Board                  app/Board.hs:5:40-41                         329          96    0.0    0.0     0.0    0.0
+    hasDuplicateRows                         Board                  app/Board.hs:(47,1)-(48,75)                  326          18    0.0    0.0     0.0    0.0
+     ==                                      Board                  app/Board.hs:5:40-41                         327          16    0.0    0.0     0.0    0.0
+    areRowCountsOK                           Board                  app/Board.hs:(15,1)-(19,27)                  320          16    0.0    0.0     0.0    0.0
+     countElem                               Board                  app/Board.hs:12:1-36                         321          32    0.0    0.0     0.0    0.0
+      ==                                     Board                  app/Board.hs:5:40-41                         323         256    0.0    0.0     0.0    0.0
+     areRowCountsOK.len                      Board                  app/Board.hs:19:5-27                         324          16    0.0    0.0     0.0    0.0
+    isBoardOK.trs                            Board                  app/Board.hs:41:5-22                         325           1    0.0    0.0     0.0    0.0
+  time                                       Main                   app/Main.hs:(18,1)-(22,70)                   312           1    0.0    0.0     0.0    0.0
