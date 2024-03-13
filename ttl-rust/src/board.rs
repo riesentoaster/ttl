@@ -10,11 +10,6 @@ pub fn transpose<T: Copy>(board: &[Vec<T>]) -> Vec<Vec<T>> {
         .collect()
 }
 
-pub trait InnerValue<T> {
-    fn inner_value_mut(&mut self) -> &mut T;
-    fn inner_value(&self) -> &T;
-}
-
 pub trait Validator {
     fn is_valid(&self) -> bool;
 }

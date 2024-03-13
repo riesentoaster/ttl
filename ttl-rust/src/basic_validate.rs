@@ -1,7 +1,10 @@
-use std::fmt::Display;
+use std::{
+    fmt::Display,
+    ops::{Deref, DerefMut},
+};
 
 use crate::{
-    board::{transpose, Board, BoardPrinter, InnerValue, Validator},
+    board::{transpose, Board, BoardPrinter, Validator},
     field::Field,
 };
 
@@ -39,17 +42,20 @@ impl Validator for BasicValidator {
 
 impl Display for BasicValidator {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        BoardPrinter(self.inner_value()).fmt(f)
+        BoardPrinter(self.deref()).fmt(f)
     }
 }
 
-impl InnerValue<Board> for BasicValidator {
-    fn inner_value_mut(&mut self) -> &mut Board {
-        &mut self.0
-    }
-
-    fn inner_value(&self) -> &Board {
+impl Deref for BasicValidator {
+    type Target = Board;
+    fn deref(&self) -> &Self::Target {
         &self.0
+    }
+}
+
+impl DerefMut for BasicValidator {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
 

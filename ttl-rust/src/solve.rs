@@ -1,9 +1,11 @@
+use std::ops::{Deref, DerefMut};
+
 use crate::{
-    board::{Board, InnerValue, Validator},
+    board::{Board, Validator},
     field::Field::{E, O, X},
 };
 
-pub fn solve<T: InnerValue<Board> + Validator + Clone>(board: &T) -> Vec<T> {
+pub fn solve<T: Deref<Target = Board> + DerefMut + Validator + Clone>(board: &T) -> Vec<T> {
     let mut stack: Vec<T> = vec![board.clone()];
     let mut solutions: Vec<T> = Vec::new();
     while let Some(current) = stack.pop() {
@@ -11,7 +13,7 @@ pub fn solve<T: InnerValue<Board> + Validator + Clone>(board: &T) -> Vec<T> {
             continue;
         }
 
-        let inner = current.inner_value();
+        let inner = current.deref();
 
         if !inner.iter().flatten().any(|&field| field == E) {
             solutions.push(current.clone());
@@ -22,7 +24,7 @@ pub fn solve<T: InnerValue<Board> + Validator + Clone>(board: &T) -> Vec<T> {
                 if inner[i][j] == E {
                     for value in [X, O] {
                         let mut c = current.clone();
-                        c.inner_value_mut()[i][j] = value;
+                        c.deref_mut()[i][j] = value;
                         stack.push(c);
                     }
                     break 'outer;
