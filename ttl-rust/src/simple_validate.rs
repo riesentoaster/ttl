@@ -107,4 +107,36 @@ mod tests {
             );
         }
     }
+
+    macro_rules! triplet_tests {
+        ( $( ($board: literal, $expected: literal, $name: ident) ),* $(,)? ) => {
+            $(
+                #[test]
+                fn $name() {
+                    let board = parse_board($board).unwrap();
+                    let expected = $expected;
+                    let wrapper = SimpleValidator::new(board);
+                    let is_valid = wrapper.is_valid();
+                    assert_eq!(
+                        is_valid, expected,
+                        "expected {} for board {}",
+                        expected, wrapper
+                    );
+                }
+            )*
+        };
+    }
+
+    triplet_tests! {
+        ("EEEE|EEEE|EEEE|EEEE", true, no_xs),
+        ("XEEE|EEEE|EEEE|EEEE", true, single_element),
+        ("XXEE|XEEE|EEEE|EEEE", true, two_in_a_row_empty_around),
+        ("XXOE|XOEE|OEEE|EEEE", true, two_in_a_row_other_around),
+        ("XXXE|XEEE|EEEE|EEEE", false, three_in_a_row_horizontally),
+        ("XXEE|XEEE|XEEE|EEEE", false, three_in_a_row_vertically),
+        ("XXXX|XEEE|EEEE|EEEE", false, four_in_a_row_horizontally),
+        ("XXEE|XEEE|XEEE|XEEE", false, four_in_a_row_vertically),
+        ("XOXE|XEEE|EEEE|EEEE", true, three_in_a_row_h_interspersed),
+        ("XXEE|OEEE|XEEE|EEEE", true, three_in_a_row_v_interspersed),
+    }
 }
